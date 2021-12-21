@@ -1,0 +1,13 @@
+Le sujet du projet:
+
+-le serveur fixe un nombre aléatoire entre Min et Max (definie dans header.h) et on a 2 clients qui chacun leur tour envoi une valeur ,les valeurs s'ajoutent au fur à mesure du jeu et celui qui en ajoutant sa valeur a la somme fait que la somme depasse la valeur fixer par le serveur a perdu.Tout au long du jeu , les joueurs ont des indications sur leur proximité par rapport à la valeur du serveur.Au debut du jeu la somme vaut 0.
+
+
+Pour compiler,lancer et tester:
+
+-il suffit de faire un make dans le dossier qui contient les fichiers pour compiler
+-on a 4 executable ./serveur ./client1 ./client2 ./client3
+-on lance d'abord le serveur puis 2 clients ensuite( 2 parmis les 3).
+-puis dans les clients il faudra au fur et a mesure rentrer des valeurs compris entre min et max jusqu'a que l'un des 2 joueurs gagne(si on rentre une valeur >Max ou <Min ou pas du bon format alors message qui previent) 
+-lorsque un joueur qui attend son tour entre quelques chose dans l'entrée , un message s'affiche
+-ensuite lorsque une partie est fini , il sera possible de rejouer ou quitter(si les 2 clients quitte le serveur quitte aussi sinon le serveur continue a tourner)(si on rentre autre chose que 1(=rejouer) ou 0(=quitter) ou que l'on rentre pas le bon format alors message qui previent)  
