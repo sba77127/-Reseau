@@ -1,6 +1,5 @@
 Les bugs connus:
--lorsque on execute un 3 ème client , il bloque le tour d'un joueur
--Lorsque l'on cherche à faire passer le jeu de 2 joueurs à 3 joueurs en changeant Maxvalue dans header.h , ne fonctionne pas.
+-Lorsque l'on cherche à faire passer le jeu de 2 joueurs à 3 joueurs ou plus en changeant Maxvalue dans header.h , ne fonctionne pas.
 -Lorsque l'on joue et qu'on rentre une valeur qui respecte toutes les condtions(entre les valeurs fixées et bon format) il arrive (très rarement) que la valeur sois considérée comme ne respectant pas les conditions fixées et il faut donc la retaper pour qu'elle soit pris en compte 
 
 -Je pense que le problème lier au 3ème client , est du au fait que j'ai penser le code pour 2 joueurs(comme c'était prévu pour le projet) puis j'ai essayer de faire fonctionner le code sur plus de joueurs(c'était un peu tard je pense)

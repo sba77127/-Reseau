@@ -73,6 +73,11 @@ fflush(0);
             strcat(Interaction.Msgbuffer,"\n");
             if(gametool.nbjoueur!=MaxClient){
             strcat(Interaction.Msgbuffer,"Let's wait for more players...\n");
+            strcat(Interaction.Msgbuffer,"Remaining player before starting: ");
+              sprintf(CharofplayerNumber,"%d",MaxClient-gametool.nbjoueur);
+              strcat(Interaction.Msgbuffer,CharofplayerNumber);
+              strcat(Interaction.Msgbuffer,"\n");
+            
             }
                
                send=sendto(udp_socket,(struct GameInteractionServeurClient*)&Interaction,sizeof(Interaction),0,(struct sockaddr*)&peer_addr,peer_addr_size);
@@ -236,11 +241,28 @@ fflush(0);
          Interaction.myclient=clients.myclient[i];
          peer_addr=clients.myclient[i].my_addr;
          
-       
+         int pos=-1;
+         
+         while(pos==-1){
+             
          data=recvfrom(udp_socket,(struct GameInteractionServeurClient*)&Interaction,sizeof(Interaction),0,(struct sockaddr*)&peer_addr,&peer_addr_size); 
          
           
           recvfromerror(data);
+          
+          verifClientinArray(&pos,&clients,Interaction.myclient);
+          
+          if(pos==-1){
+               
+               strcpy(buffertosend,"exit");
+               send=sendto(udp_socket,buffertosend,sizeof(buffertosend),0,(struct sockaddr*)&peer_addr,peer_addr_size);
+               sendtoerror(send);
+          
+              
+        }
+          
+          
+         } 
           updateArrayofclient(&clients,Interaction);
           
          
@@ -277,10 +299,28 @@ fflush(0);
            
           clearbuffer(&Interaction);
          
-          data=recvfrom(udp_socket,(struct GameInteractionServeurClient*)&Interaction,sizeof(Interaction),0,(struct sockaddr*)&peer_addr ,&peer_addr_size); 
+         int pos=-1;
+         
+         while(pos==-1){
+             
+         data=recvfrom(udp_socket,(struct GameInteractionServeurClient*)&Interaction,sizeof(Interaction),0,(struct sockaddr*)&peer_addr,&peer_addr_size); 
          
           
-         recvfromerror(data);
+          recvfromerror(data);
+          
+          verifClientinArray(&pos,&clients,Interaction.myclient);
+          
+          if(pos==-1){
+               
+               strcpy(buffertosend,"exit");
+               send=sendto(udp_socket,buffertosend,sizeof(buffertosend),0,(struct sockaddr*)&peer_addr,peer_addr_size);
+               sendtoerror(send);
+          
+              
+        }
+          
+          
+         } 
          
           sprintf(valofopponent,"%d",clients.myclient[i].value);
           int clientlength=clients.taille;
@@ -332,9 +372,28 @@ fflush(0);
           sendtoerror(send);
           clearbuffer(&Interaction);
           
-          data=recvfrom(udp_socket,(struct GameInteractionServeurClient*)&Interaction,sizeof(Interaction),0,(struct sockaddr*)&peer_addr ,&peer_addr_size); 
+          int pos=-1;
          
+         while(pos==-1){
+             
+         data=recvfrom(udp_socket,(struct GameInteractionServeurClient*)&Interaction,sizeof(Interaction),0,(struct sockaddr*)&peer_addr,&peer_addr_size); 
+         
+          
           recvfromerror(data);
+          
+          verifClientinArray(&pos,&clients,Interaction.myclient);
+          
+          if(pos==-1){
+               
+               strcpy(buffertosend,"exit");
+               send=sendto(udp_socket,buffertosend,sizeof(buffertosend),0,(struct sockaddr*)&peer_addr,peer_addr_size);
+               sendtoerror(send);
+          
+              
+        }
+          
+          
+         } 
          
          if(Interaction.Answer==false){
            printf("the player %d has left\n",j+1);   

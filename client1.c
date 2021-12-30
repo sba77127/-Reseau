@@ -69,12 +69,24 @@
            
         }else if(FD_ISSET(udp_socket,&read_set)){
         
+            
         data=  recvfrom(udp_socket,buffrecu,buffsize,0,(struct sockaddr*)&peer_addr,&peer_addr_size);
         
         recvfromerror(data);
     
+          
+          
+          if(strcmp(buffrecu,"exit")==0){
+              printf("The game has already started, please try later\n");
+              fflush(0);
+          
+              return 0;
+        }else{
           printf("%s\n",buffrecu);
           fflush(0);
+        
+            
+        }
           
 
         }

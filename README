@@ -8,6 +8,7 @@ Pour compiler,lancer et tester:
 -il suffit de faire un make dans le dossier qui contient les fichiers pour compiler
 -on a 4 executable ./serveur ./client1 ./client2 ./client3
 -on lance d'abord le serveur puis 2 clients ensuite( 2 parmis les 3).
+-On teste aussi en lançant le dernier client , normalement il doit être refuser car le jeu est limité à 2 joueurs.
 -puis dans les clients il faudra au fur et a mesure rentrer des valeurs compris entre min et max jusqu'a que l'un des 2 joueurs gagne(si on rentre une valeur >Max ou <Min ou pas du bon format alors message qui previent) 
 -lorsque un joueur qui attend son tour entre quelques chose dans l'entrée , un message s'affiche
 -ensuite lorsque une partie est fini , il sera possible de rejouer ou quitter(si les 2 clients quitte le serveur quitte aussi sinon le serveur continue a tourner)(si on rentre autre chose que 1(=rejouer) ou 0(=quitter) ou que l'on rentre pas le bon format alors message qui previent)  
